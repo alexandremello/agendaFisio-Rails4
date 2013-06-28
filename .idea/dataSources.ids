@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails agendaFisio: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="81850f3a-e39f-4721-8918-6a37b6586518">
+    <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+    <jdbc-url>jdbc:postgresql://127.0.0.1/agendaFisioDev</jdbc-url>
+    <user-name>agendaFisioDev</user-name>
+    <user-password>dfd8dfcbdfc3dfc6dfd9</user-password>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-driver-license.txt</url>
+      </library>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-9.1-901.jdbc3.jar</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Rails agendaFisio: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="bf77f398-5e06-4fc7-8b5f-0a9bfd3bb3bb">
+    <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+    <jdbc-url>jdbc:postgresql://127.0.0.1/agendaFisio</jdbc-url>
+    <user-name>agendaFisio</user-name>
+    <user-password>dfd8dfcbdfc3dfc6dfd9</user-password>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-driver-license.txt</url>
+      </library>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-9.1-901.jdbc3.jar</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Rails agendaFisio: test" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="85db58f6-7030-4d1e-8f0a-0798922805bc">
+    <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+    <jdbc-url>jdbc:postgresql://127.0.0.1/agendaTeste</jdbc-url>
+    <user-name>agendaFisioTeste</user-name>
+    <user-password>dfd8dfcbdfc3dfc6dfd9</user-password>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-driver-license.txt</url>
+      </library>
+      <library>
+        <url>file://$USER_HOME$/Library/Preferences/RubyMine50/jdbc-drivers/postgresql-9.1-901.jdbc3.jar</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>
