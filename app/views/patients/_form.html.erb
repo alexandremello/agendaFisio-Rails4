@@ -1,0 +1,29 @@
+<%= form_for(@patient, :html => { :id => '.form-horizontal' }) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <div class="controls">
+        <%= f.text_field :name %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :birth %><br>
+    <div class="controls">
+        <%= f.date_select :birth %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

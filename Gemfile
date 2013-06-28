@@ -7,7 +7,7 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'pg'
 
 # CSS3 Buttons
-gem 'css3buttons', '1.0.1'
+# gem 'css3buttons', '1.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
