@@ -6,6 +6,8 @@
       <th>Name</th>
       <th>Birth</th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,12 +16,9 @@
       <tr>
         <td><%= patient.name %></td>
         <td><%= patient.birth %></td>
-        <td>
-            <%= button_group do %>
-                <%= link_to 'Show', patient %>
-                <%= link_to 'Edit', edit_patient_path(patient) %>
-                <%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %>
+        <td><%= link_to 'Show', patient %></td>
+        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </td>
       </tr>
     <% end %>
