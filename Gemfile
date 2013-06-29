@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# New Relic
+gem 'newrelic_rpm'
+
 # Devise - user control
 gem 'devise', '~> 3.0.0.rc'
 
