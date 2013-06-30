@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   # GET /patients
@@ -71,4 +72,5 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:name, :birth)
     end
+    
 end
