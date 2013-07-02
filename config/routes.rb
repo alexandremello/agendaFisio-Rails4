@@ -2,6 +2,7 @@ AgendaFisio::Application.routes.draw do
   resources :patients
 
   devise_for :users
+  resources :users
 
   root to: "patients#index"
   #devise_scope :user do
