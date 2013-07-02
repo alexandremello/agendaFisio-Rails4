@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :verify_user
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   # GET /patients
@@ -73,4 +73,12 @@ class PatientsController < ApplicationController
       params.require(:patient).permit(:name, :birth)
     end
     
+    # Allow access only to admin user
+    def verify_user
+      if !user_signed_in?
+        redirect_to :new_user_session
+      elsif !current_user.admin?
+        render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
+      end
+    end
 end
