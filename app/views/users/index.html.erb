@@ -5,6 +5,8 @@
     <tr>
       <th>E-mail</th>
       <th>Admin</th>
+      <th>Login Count</th>
+      <th>Last Sign In</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +18,14 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.admin %></td>
+        <th><%= user.sign_in_count %></th>
+        <th>
+          <%if user.last_sign_in_at.blank? %>
+            Never logged in
+          <% else %>
+            <%= time_ago_in_words(user.last_sign_in_at.to_datetime)+' ago' %>
+          <% end %>
+        </th>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,4 +37,4 @@
 
 <br>
 
-<%= link_to 'New Patient', new_user_path %>
+<%= link_to 'New User', new_user_path %>
