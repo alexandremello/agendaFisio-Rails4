@@ -1,4 +1,5 @@
 <%= form_for([@patient, @user], :html => { :id => '.form-horizontal' }) do |f| %>
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -14,9 +15,24 @@
   <div class="field">
     <%= f.label :email %><br>
     <div class="controls">
-        <%= f.text_field :email %>
+      <%= f.email_field :email, :autofocus => true %>
     </div>
   </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <div class="controls">
+      <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

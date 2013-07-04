@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
 	def create
 		@patient = Patient.find(params[:patient_id])
-		@user = @patient.create_user(params[:user])
+		@user = @patient.create_user(user_params)
 		
 		respond_to do |format|
 			if @user.save
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params.require(:user).permit(:email)
+		params.require(:user).permit([:email, :password])
 	end
 
 	def verify_user
