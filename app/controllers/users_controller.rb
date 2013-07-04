@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
-	before_action :verify_user, except: :show
+	before_action :verify_user
 
 	def index
 		@users = User.all
@@ -79,8 +79,11 @@ class UsersController < ApplicationController
 	end
 
 	def verify_user
-		if current_user != @user && !current_user.admin? 
-			render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
+		if !current_user.admin?
+			if current_user.id != @user.id
+				#render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
+				redirect_to patient_user_path(current_user.patient, current_user)
+			end
 		end
 	end
 end
