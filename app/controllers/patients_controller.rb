@@ -78,7 +78,9 @@ class PatientsController < ApplicationController
       if !user_signed_in?
         redirect_to :new_user_session
       elsif !current_user.admin?
-        render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
+        redirect_to current_user.patient
+      #else
+        #render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
       end
     end
 end

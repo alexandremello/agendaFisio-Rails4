@@ -7,6 +7,10 @@ AgendaFisio::Application.routes.draw do
     resources :users     
   end
 
+  authenticated :user do
+    root to: current_user.patient
+  end
+
   root to: "patients#index"
   #devise_scope :user do
     #root to: "devise/sessions#new"
