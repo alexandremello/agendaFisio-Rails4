@@ -17,7 +17,11 @@
       <tr>
         <td><%= patient.name %></td>
         <td><%= patient.birth %></td>
-        <td><%= patient.username %></td>
+        <% if patient.user %>
+          <td><%= link_to patient.username, edit_patient_user_path(patient, patient.user) %></td>
+        <% else %>
+          <td><%= link_to patient.username, new_patient_user_path(patient) %></td> 
+        <% end %>
         <td><%= link_to 'Show', patient %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>

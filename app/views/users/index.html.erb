@@ -9,7 +9,6 @@
       <th>Last Sign In</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -26,8 +25,7 @@
             <%= time_ago_in_words(user.last_sign_in_at.to_datetime)+' ago' %>
           <% end %>
         </th>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_patient_user_path(user.patient, user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </td>
       </tr>
@@ -37,4 +35,3 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>

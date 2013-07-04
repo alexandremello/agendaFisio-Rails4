@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-	before_action :verify_user
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	before_action :verify_user, except: :show
+	before_action :own_user, only: [:show, :edit, :update]
 
 	def index
 		@users = User.all
 	end
 
 	def show
-		@patient = Patient.find(params[:patient_id])
 		@user = User.find(params[:id])
 
 		respond_to do |format|
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 		
 		respond_to do |format|
 			if @user.save
-				format.html { redirect_to patient_user_path(@patient, @user), notice: 'User was successful created.'}
+				format.html { redirect_to patient_path(@patient), notice: 'User was successful created.'}
 				format.json { render json: @user, status: :created, location: @user }
 			else
 				format.html { render action: 'new' }
@@ -47,6 +47,8 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		@patient = Patient.find(params[:patient_id])
+		@user = User.find(params[:id])
 		respond_to do |format|
 			if @user.update(user_params)
 				format.html { redirect_to @user, notice: 'User was successful updated.' }
@@ -83,4 +85,12 @@ class UsersController < ApplicationController
 			render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
 		end
 	end
+
+	def own_user
+		if autheticate!
+			if current_user != @user && !current_user.admin?
+				render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
+			end
+		end
+	end	
 end
