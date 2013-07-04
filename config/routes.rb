@@ -1,6 +1,4 @@
 AgendaFisio::Application.routes.draw do
-  resources :exams
-
   devise_for :users, :path_prefix => 'login'
 
   resources :users 
