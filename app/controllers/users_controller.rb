@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+	before_action :authenticate_user!
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 	before_action :verify_user, except: :show
-	before_action :own_user, only: [:show, :edit, :update]
 
 	def index
 		@users = User.all
@@ -79,18 +79,8 @@ class UsersController < ApplicationController
 	end
 
 	def verify_user
-		if !user_signed_in?
-			redirect_to :new_user_session
-		elsif !current_user.admin?
+		if current_user != @user && !current_user.admin? 
 			render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
 		end
 	end
-
-	def own_user
-		if autheticate!
-			if current_user != @user && !current_user.admin?
-				render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
-			end
-		end
-	end	
 end

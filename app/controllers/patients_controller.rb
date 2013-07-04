@@ -1,7 +1,8 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :verify_user, except: :show
-  before_action :own_patient, only: :show
+
   # GET /patients
   # GET /patients.json
   def index
@@ -75,19 +76,9 @@ class PatientsController < ApplicationController
     
     # Allow access only to admin user
     def verify_user
-      if !user_signed_in?
-        redirect_to :new_user_session
-      elsif !current_user.admin?
-        redirect_to patient_path(current_user.patient)
-      #else
-        #render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
-      end
-    end
-
-    # Allow access only to own user
-    def own_patient
       if current_user.patient != @patient && !current_user.admin?
         render :file => "#{Rails.root}/public/403.html", :status => 403, :layout => false
       end
     end
+
 end
