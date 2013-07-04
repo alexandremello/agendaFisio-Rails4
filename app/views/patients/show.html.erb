@@ -10,5 +10,9 @@
   <%= @patient.birth %>
 </p>
 
+<p>
+	<%= render 'exams' %>
+</p>
+
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>

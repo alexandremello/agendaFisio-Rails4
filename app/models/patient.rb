@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
   has_one :user
+  has_many :exams
 
   validates :name, presence: true
 

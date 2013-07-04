@@ -1,0 +1,33 @@
+<h4>Exams</h4>
+
+<table class="table">
+	<thead>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+		<% @patient.exams.each do |exam| %>
+			<tr>
+				<td>
+					<%= exam.date %>
+				</td>
+				<td>
+					<%= link_to 'Show', patient_exam_path(@patient, exam) %>
+				</td>
+				<td>
+					<%= link_to 'Edit', edit_patient_exam_path(@patient, exam) %>
+				</td>
+				<td>
+					<%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?'} %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<p><%= link_to 'New exam', new_patient_exam_path(@patient) %></p>
