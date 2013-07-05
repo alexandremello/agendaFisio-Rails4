@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Birth</th>
-      <th>Last exam</th>
+      <th>Last Exam</th>
+      <th>Last Appointment</th>
+      <th>Next Appointment</th>
       <th>User</th>
       <th></th>
       <th></th>
@@ -17,13 +18,13 @@
     <% @patients.each do |patient| %>
       <tr>
         <td><%= patient.name %></td>
-        <td><%= patient.birth %></td>
         <td><%= patient.last_exam %></td>
-
+        <td><%= patient.last_appointment %></td>
+        <td><%= patient.next_appointment %></td>
         <% if patient.user %>
           <td><%= link_to patient.username, edit_patient_user_path(patient, patient.user) %></td>
         <% else %>
-          <td><%= link_to patient.username, new_patient_user_path(patient) %></td> 
+          <td><%= link_to patient.username, new_patient_user_path(patient) %></td>
         <% end %>
 
         <td><%= link_to 'Show', patient %></td>

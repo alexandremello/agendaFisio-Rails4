@@ -1,11 +1,9 @@
 <h1>Listing appointments</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Start</th>
-      <th>End</th>
-      <th>Description</th>
       <th>Patient</th>
       <th>Title</th>
       <th></th>
@@ -18,9 +16,7 @@
     <% @appointments.each do |appointment| %>
       <tr>
         <td><%= appointment.start %></td>
-        <td><%= appointment.end %></td>
-        <td><%= appointment.description %></td>
-        <td><%= appointment.patient_id %></td>
+        <td><%= appointment.patient.name %></td>
         <td><%= appointment.title %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
@@ -32,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Appointment', new_appointment_path %>
+<% if current_user.admin? %>
+  <%= link_to 'New Appointment', new_appointment_path %>
+<% end %>

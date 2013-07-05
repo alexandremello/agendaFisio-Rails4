@@ -1,4 +1,4 @@
-<%= form_for(@appointment) do |f| %>
+<%= form_for(@appointment, :html => { :id => '.form-horizontal' }) do |f| %>
   <% if @appointment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
@@ -12,24 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :start %><br>
-    <%= f.datetime_select :start %>
+    <%= f.label :start %>
+    <div class="controls">
+      <%= f.date_field :start %>
+      <div class="controls">
+        <%= f.time_field :start, ignore_date: true %>
+      </div>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :end %><br>
-    <%= f.datetime_select :end %>
+    <%= f.label :end %>
+    <div class="controls">
+      <%= f.date_field :end %>
+      <div class="controls">
+        <%= f.time_field :end, ignore_date: true %>
+      </div>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description %>
+    <div class="controls">
+      <%= f.text_area :description %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :patient_id %><br>
-    <%= f.number_field :patient_id %>
+    <%= f.label :patient_id %>
+    <div class="controls">
+      <%= collection_select(:appointment, :patient_id, Patient.all, :id, :name, prompt: true) %>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <div class="controls">
+      <%= f.text_field :title %>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>

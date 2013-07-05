@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env)
 
 module AgendaFisio
   class Application < Rails::Application
+    config.time_zone = 'Brasilia'
+    config.active_record.default_timezone = 'Brasilia'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

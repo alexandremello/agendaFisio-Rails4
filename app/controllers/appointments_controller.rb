@@ -17,7 +17,6 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @patient = Patient.find(params[:patient_id])
     @appointment = Appointment.new
   end
 
@@ -30,8 +29,8 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    @patient = Patient.find(params[:patient_id])
-    @appointment = @patient.appointments.new(appointment_params)
+    #@patient = Patient.find(params[:patient_id])
+    @appointment = Appointment.new(appointment_params)
 
     respond_to do |format|
       if @appointment.save
@@ -75,7 +74,7 @@ class AppointmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
-      @patient = Patient.find(params[:patient_id])
+      #@patient = Patient.find(params[:patient_id])
       @appointment = Appointment.find(params[:id])
     end
 

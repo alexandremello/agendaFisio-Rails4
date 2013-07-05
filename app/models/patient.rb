@@ -1,6 +1,7 @@
 class Patient < ActiveRecord::Base
   has_one :user
   has_many :exams
+  has_many :appointments
 
   validates :name, presence: true
 
@@ -18,6 +19,24 @@ class Patient < ActiveRecord::Base
       exam.date
     else
       'No exams'
+    end
+  end
+
+  def last_appointment
+    appointment = self.appointments.where("start < ?", Time.now).order("start desc").first()
+    if appointment
+      appointment.start
+    else
+      'No prior appointments'
+    end
+  end
+
+  def next_appointment
+    appointment = self.appointments.where("start > ?", Time.now).order("start").first()
+    if appointment
+      appointment.start
+    else
+      'No next appointment'
     end
   end
 end
