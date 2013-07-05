@@ -1,4 +1,6 @@
 AgendaFisio::Application.routes.draw do
+  resources :appointments
+
   devise_for :users, :path_prefix => 'login'
 
   resources :users 
@@ -6,6 +8,7 @@ AgendaFisio::Application.routes.draw do
   resources :patients do
     resources :users    
     resources :exams 
+    resources :appointments
   end
 
   root to: "patients#index"
