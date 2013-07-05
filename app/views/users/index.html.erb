@@ -19,14 +19,14 @@
         <td><%= user.admin %></td>
         <th><%= user.sign_in_count %></th>
         <th>
-          <%if user.last_sign_in_at.blank? %>
+          <% if user.last_sign_in_at.blank? %>
             Never logged in
           <% else %>
             <%= time_ago_in_words(user.last_sign_in_at.to_datetime)+' ago' %>
           <% end %>
         </th>
-        <td><%= link_to 'Edit', edit_patient_user_path(user.patient, user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_patient_user_path(user.patient, user) %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </td>
       </tr>
     <% end %>

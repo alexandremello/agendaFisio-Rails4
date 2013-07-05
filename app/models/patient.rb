@@ -8,7 +8,16 @@ class Patient < ActiveRecord::Base
   	if self.user
   		self.user.email
   	else
-  		'Não cadastrado'
+  		'No user'
   	end
+  end
+
+  def last_exam
+    exam = self.exams.order("date desc").first()
+    if exam
+      exam.date
+    else
+      'No exams'
+    end
   end
 end
