@@ -15,7 +15,7 @@
   <tbody>
     <% @exams.each do |exam| %>
       <tr>
-        <td><%= exam.date %></td>
+        <td><%= exam.date_formated %></td>
         <td><%= exam.description %></td>
         <td><%= exam.patient_id %></td>
         <td><%= link_to 'Show', patient_exam_path(@patient, exam) %></td>

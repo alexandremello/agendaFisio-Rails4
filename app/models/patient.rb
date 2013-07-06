@@ -16,7 +16,7 @@ class Patient < ActiveRecord::Base
   def last_exam
     exam = self.exams.order("date desc").first()
     if exam
-      exam.date
+      exam.date_formated
     else
       'No exams'
     end
@@ -25,7 +25,7 @@ class Patient < ActiveRecord::Base
   def last_appointment
     appointment = self.appointments.where("start < ?", Time.now).order("start desc").first()
     if appointment
-      appointment.start
+      appointment.start_date
     else
       'No prior appointments'
     end
@@ -34,7 +34,7 @@ class Patient < ActiveRecord::Base
   def next_appointment
     appointment = self.appointments.where("start > ?", Time.now).order("start").first()
     if appointment
-      appointment.start
+      appointment.start_date
     else
       'No next appointment'
     end

@@ -3,7 +3,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Start</th>
+      <th>Date</th>
+      <th>Hour</th>
       <th>Patient</th>
       <th>Title</th>
       <th></th>
@@ -15,7 +16,8 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.start %></td>
+        <td><%= appointment.start_date %></td>
+        <td><%= appointment.start_hour %></td>
         <td><%= appointment.patient.name %></td>
         <td><%= appointment.title %></td>
         <td><%= link_to 'Show', appointment %></td>

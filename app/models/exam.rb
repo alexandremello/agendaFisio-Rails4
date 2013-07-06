@@ -1,5 +1,7 @@
 class Exam < ActiveRecord::Base
 	belongs_to :patient
 
-	scope :desc, order("exam.date DESC")
+	def date_formated
+		self.date.strftime("%d/%m/%Y")
+	end
 end
