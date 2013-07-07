@@ -1,13 +1,14 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :get_patient
+  before_action :get_appointment, only: [:show, :edit, :update, :destroy]
   before_action :only_admin, except: :show
   before_action :verify_user, only: :show
   
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.all
+    @appointments = @patient ? @patient.appointments : Appointment.all
   end
 
   # GET /appointments/1
@@ -22,8 +23,6 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1/edit
   def edit
-    #@patient = Patient.find(params[:patient_id])
-    #@appointments = Appointment.find(params[:id])
   end
 
   # POST /appointments
@@ -46,9 +45,6 @@ class AppointmentsController < ApplicationController
   # PATCH/PUT /appointments/1
   # PATCH/PUT /appointments/1.json
   def update
-    #@patient = Patient.find(params[:patient_id])
-    #@appointment = Appointment.find(params[:id])
-
     respond_to do |format|
       if @appointment.update(appointment_params)
         format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
@@ -63,8 +59,6 @@ class AppointmentsController < ApplicationController
   # DELETE /appointments/1
   # DELETE /appointments/1.json
   def destroy
-    #@patient = Patient.find(params[:patient_id])
-    #@appointment.destroy
     respond_to do |format|
       format.html { redirect_to appointments_url }
       format.json { head :no_content }
@@ -73,9 +67,17 @@ class AppointmentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_appointment
-      #@patient = Patient.find(params[:patient_id])
-      @appointment = Appointment.find(params[:id])
+    #def set_appointment
+      #@patient = Patient.find(params[:patient_id]) if params[:patient_id]
+      #@appointment = Appointment.find(params[:id])
+    #end
+
+    def get_patient
+    	@patient = Patient.find(params[:patient_id]) if params[:patient_id]
+    end
+
+    def get_appointment
+    	@appointment = @patient ? @patient.appointments.find(params[:id]) : Appointment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
