@@ -7,9 +7,11 @@
       <th>Hour</th>
       <th>Patient</th>
       <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <% if current_user.admin? %>
+        <th></th>
+        <th></th>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -20,9 +22,11 @@
         <td><%= appointment.start_hour %></td>
         <td><%= appointment.patient.name %></td>
         <td><%= appointment.title %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %>
+          <td><%= link_to 'Show', appointment %></td>
+          <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
+          <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

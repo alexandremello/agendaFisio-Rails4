@@ -2,8 +2,8 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_patient
   before_action :get_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :only_admin, except: :show
-  before_action :verify_user, only: :show
+  before_action :only_admin, except: [:show, :index]
+  before_action :verify_user
   
   # GET /appointments
   # GET /appointments.json
@@ -100,4 +100,5 @@ class AppointmentsController < ApplicationController
       end
     end
   end
+
 end
