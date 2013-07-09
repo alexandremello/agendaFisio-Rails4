@@ -47,13 +47,7 @@
           <a class="brand" href="/">AgendaFisio</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <% if user_signed_in? %>
-                <% if current_user.admin? %>
-                  <%= render "nav_admin" %>
-                <% else %>
-                  <%= render "nav_user" %>
-                <% end %>
-              <% end %>
+              <%= nav_items %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
