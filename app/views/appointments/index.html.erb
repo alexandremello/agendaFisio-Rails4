@@ -18,8 +18,8 @@
   <tbody>
     <% @appointments.each do |appointment| %>
       <tr>
-        <td><%= appointment.start_date %></td>
-        <td><%= appointment.start_hour %></td>
+        <td><%= format_date(appointment.start) %></td>
+        <td><%= format_time(appointment.start) %></td>
         <td><%= appointment.patient.name %></td>
         <td><%= appointment.title %></td>
         <% if current_user.admin? %>

@@ -11,5 +11,12 @@ require 'spec_helper'
 #   end
 # end
 describe AppointmentsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:appointment) { Appointment.new(start: '2013-07-10 19:00') }
+  
+  context 'format' do
+  	it { helper.format_date(appointment.start).should == '10/07/2013' }
+
+  	it { helper.format_time(appointment.start).should == '19h00min'}
+  end
+
 end
