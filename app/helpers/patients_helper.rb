@@ -1,7 +1,7 @@
 module PatientsHelper
 
 	def user
-
+		# retirar o if do link_to username
 	end
 
 	def username(patient)
