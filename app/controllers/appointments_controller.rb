@@ -4,6 +4,8 @@ class AppointmentsController < ApplicationController
   before_action :get_appointment, only: [:show, :edit, :update, :destroy]
   before_action :only_admin, except: [:show, :index]
   before_action :verify_user
+
+  respond_to :html, :json
   
   # GET /appointments
   # GET /appointments.json
@@ -28,7 +30,6 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    #@patient = Patient.find(params[:patient_id])
     @appointment = Appointment.new(appointment_params)
 
     respond_to do |format|

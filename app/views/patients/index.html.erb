@@ -18,13 +18,13 @@
     <% @patients.each do |patient| %>
       <tr>
         <td><%= patient.name %></td>
-        <td><%= patient.last_exam %></td>
-        <td><%= patient.last_appointment %></td>
-        <td><%= patient.next_appointment %></td>
+        <td><%= last_exam(patient) %></td>
+        <td><%= last_appointment(patient) %></td>
+        <td><%= next_appointment(patient) %></td>
         <% if patient.user %>
-          <td><%= link_to patient.username, edit_patient_user_path(patient, patient.user) %></td>
+          <td><%= link_to username(patient), edit_patient_user_path(patient, patient.user) %></td>
         <% else %>
-          <td><%= link_to patient.username, new_patient_user_path(patient) %></td>
+          <td><%= link_to username(patient), new_patient_user_path(patient) %></td>
         <% end %>
 
         <td><%= link_to 'Show', patient %></td>
