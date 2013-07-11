@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20130705181531) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "appointments", force: true do |t|
     t.datetime "start"
     t.datetime "end"
@@ -27,7 +24,7 @@ ActiveRecord::Schema.define(version: 20130705181531) do
   end
 
   create_table "exams", force: true do |t|
-    t.date     "date",        default: '2013-07-10'
+    t.date     "date",        default: '2013-07-11'
     t.text     "description"
     t.integer  "patient_id"
     t.datetime "created_at"

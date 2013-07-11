@@ -10,4 +10,16 @@ describe ApplicationHelper do
   	it { helper.format_time(datetime).should == '19h00min'}
   end
 
+  context 'navigation menu' do
+  	context 'as admin' do
+  		login_admin
+  		it {helper.nav_items.should == (render "nav_admin") }
+  	end
+
+  	context 'as user' do
+      login_user
+  		it { helper.nav_items.should == (render "nav_user") }
+  	end
+  end
+
  end
