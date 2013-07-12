@@ -4,6 +4,10 @@ class Patient < ActiveRecord::Base
   has_many :appointments
 
   validates :name, presence: true
+  validates :name, uniqueness: true
+  validates_length_of :name, minimum: 4
+
+  validates :birth, presence: true
 
 	def age
 		now = Time.now.to_date

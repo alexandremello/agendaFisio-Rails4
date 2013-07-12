@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe PatientsHelper do
- 	let(:patient) { Patient.new(name: 'jose') }
- 	context 'index.html.erb' do
+	let(:patient) { Patient.new(name: 'jose') }
+	context 'index.html.erb' do
 		
 		context 'user' do
 			context 'without user' do
-			  
+				
 				it 'patient with no user' do
 					helper.username(patient).should == 'No user'
 				end
