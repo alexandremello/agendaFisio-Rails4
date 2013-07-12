@@ -15,7 +15,7 @@ module PatientsHelper
 	def last_exam(patient)
 		exam = patient.exams.order("date desc").first()
 		if exam
-			exam.date_formated
+			format_date(exam.date)
 		else
 			'No exams'
 		end
@@ -24,7 +24,7 @@ module PatientsHelper
 	def last_appointment(patient)
 		appointment = patient.appointments.where("start < ?", Time.now).order("start desc").first()
 		if appointment
-			appointment.start_date
+			format_date(appointment.start)
 		else
 			'No prior appointments'
 		end
@@ -33,7 +33,7 @@ module PatientsHelper
 	def next_appointment(patient)
 		appointment = patient.appointments.where("start > ?", Time.now).order("start").first()
 		if appointment
-			appointment.start_date
+			format_date(appointment.start)
 		else
 			'No next appointment'
 		end

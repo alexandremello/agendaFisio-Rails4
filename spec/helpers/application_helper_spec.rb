@@ -10,4 +10,8 @@ describe ApplicationHelper do
   	it { helper.format_time(datetime).should == '19h00min'}
   end
 
+  context 'nav_items' do
+  	it(:user) { User.find(1) }
+  end
+
  end
