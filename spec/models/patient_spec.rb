@@ -27,7 +27,6 @@ describe Patient do
 				FactoryGirl.build(:patient, birth: '').should_not be_valid
 			end
  		end
-		
 	end
 
 	context 'methods' do

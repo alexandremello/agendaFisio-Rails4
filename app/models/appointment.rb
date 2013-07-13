@@ -3,14 +3,17 @@ class Appointment < ActiveRecord::Base
 
 	validates_presence_of :start, :end, :title, :patient_id
 
-	after_create :set_title
-	before_save :set_end
+	before_validation :set_title, :set_end
 
 	def set_end
-		self.end.DateTime.now.advance(minutes: 45)
+		if start
+			self.end = self.end || start.advance(minutes: 45)
+		end
 	end
 
 	def set_title
-		self.title = 'Consulta'
+		if !title || title.length == 0
+			self.title = 'Consulta'
+		end
 	end
 end
