@@ -1,40 +1,35 @@
 require 'spec_helper'
 
 describe PatientsHelper do
-	let(:patient) { Patient.new(name: 'jose') }
+	let(:patient) 			{ FactoryGirl.create(:patient) }
+	let(:patient_with_user) { FactoryGirl.create(:patient_with_user) }
+	let(:patient_with_exam) { FactoryGirl.create(:patient) }
 	context 'index.html.erb' do
-		
 		context 'user' do
 			context 'without user' do
-				
 				it 'patient with no user' do
 					helper.username(patient).should == 'No user'
 				end
 			end # context 'without user'
 			
 			context 'with user' do
-				let(:user) { User.new(email: 'alexandre@gmail.com', password: 'a0b1c2d4e6') }
-				before { patient.user = user }
-
 				it 'patient with user' do
-					helper.username(patient).should == 'alexandre@gmail.com'
+					helper.username(patient_with_user).should == patient_with_user.user.email
 				end
 			end # context 'with user'
 		end # context 'user'
 		
 		context 'exam' do
-			let(:exam) { Exam.new(date: '2013-07-10') }
-
 			it 'patient has no exams' do
 				patient = Patient.new
 				helper.last_exam(patient).should == 'No exams'
 			end
 
 			context 'with exam' do
-				before { exam.patient = patient }
-
-				xit 'patient last exam' do
-					helper.last_exam(patient).should == '10/07/2013'
+				it 'patient last exam' do
+					FactoryGirl.create(:exam, date: Date.today, patient: patient_with_exam)
+					3.times { FactoryGirl.create(:exam, patient: patient_with_exam) }
+					helper.last_exam(patient_with_exam).should == Date.today.strftime("%d/%m/%Y")
 				end
 			end # context 'with exam'
 		end # context 'exam'
