@@ -42,7 +42,10 @@ RSpec.configure do |config|
 
   # Using devise test helpers
   config.include Devise::TestHelpers, :type => :helper
+  config.include Devise::TestHelpers, :type => :controller 
 
   # Using suport/helper_macros
   config.extend HelperMacros, :type => :helper
+  config.extend ControllerMacros, :type => :controller
+
 end

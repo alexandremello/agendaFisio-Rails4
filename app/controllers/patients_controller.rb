@@ -1,8 +1,8 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
-  before_action :verify_user
-
+  before_action :verify_user#, except: [:destroy, :new, :create]
+  before_action :only_admin, only: [:index, :new, :create, :destroy]
   # GET /patients
   # GET /patients.json
   def index
@@ -82,5 +82,9 @@ class PatientsController < ApplicationController
         redirect_to current_user.patient
       end
     end
+  end
+
+  def only_admin
+    nil unless current_user.admin?
   end
 end
