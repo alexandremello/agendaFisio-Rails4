@@ -12,7 +12,7 @@ FactoryGirl.define do
 		end
 
 		factory :patient_with_appointment do
-			association :appointment
+			#association :appointment
 		end
 	end
 end
