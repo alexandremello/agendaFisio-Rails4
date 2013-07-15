@@ -11,8 +11,6 @@ describe ApplicationHelper do
 	end
 
 	context 'nav_items' do
-		it(:user) { User.find(1) }
-		
 		context 'navigation menu' do
 			context 'as admin' do
 				login_admin
