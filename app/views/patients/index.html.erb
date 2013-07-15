@@ -18,15 +18,10 @@
     <% @patients.each do |patient| %>
       <tr>
         <td><%= patient.name %></td>
-        <td><%= last_exam(patient) %></td>
-        <td><%= last_appointment(patient) %></td>
-        <td><%= next_appointment(patient) %></td>
-        <% if patient.user %>
-          <td><%= link_to username(patient), edit_patient_user_path(patient, patient.user) %></td>
-        <% else %>
-          <td><%= link_to username(patient), new_patient_user_path(patient) %></td>
-        <% end %>
-
+        <td><%= format_date(last_exam(patient)) %></td>
+        <td><%= format_date(last_appointment(patient)) %></td>
+        <td><%= format_date(next_appointment(patient)) %></td>
+        <td><%= username(patient) %></td>
         <td><%= link_to 'Show', patient %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>

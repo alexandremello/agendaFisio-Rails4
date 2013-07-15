@@ -12,7 +12,7 @@ FactoryGirl.define do
 		end
 
 		factory :appointment_prior do
-			sequence(:start) { |i| (DateTime.now - 1) }
+			sequence(:start) { |i| (DateTime.now - i) }
 		end
 	end
 end

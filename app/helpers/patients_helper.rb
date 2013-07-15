@@ -6,34 +6,34 @@ module PatientsHelper
 
 	def username(patient)
 		if patient.user
-			patient.user.email
+			link_to patient.user.email, edit_patient_user_path(patient, patient.user)
 		else
-			'No user'
+			link_to 'No user', new_patient_user_path(patient)
 		end
 	end
 
 	def last_exam(patient)
 		exam = patient.exams.order("date desc").first()
 		if exam
-			format_date(exam.date)
+			exam.date
 		else
 			'No exams'
 		end
 	end
 
 	def last_appointment(patient)
-		appointment = patient.appointments.where("start < ?", Time.now).order("start desc").first()
+		appointment = patient.appointments.where("start < ?", DateTime.now).order("start desc").first()
 		if appointment
-			format_date(appointment.start)
+			appointment.start
 		else
 			'No prior appointments'
 		end
 	end
 
 	def next_appointment(patient)
-		appointment = patient.appointments.where("start > ?", Time.now).order("start").first()
+		appointment = patient.appointments.where("start > ?", DateTime.now).order("start").first()
 		if appointment
-			format_date(appointment.start)
+			appointment.start
 		else
 			'No next appointment'
 		end

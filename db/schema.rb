@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20130705181531) do
   end
 
   create_table "exams", force: true do |t|
-    t.date     "date",        default: Date.now
+    t.date     "date",        default: Date.today
     t.text     "description"
     t.integer  "patient_id"
     t.datetime "created_at"

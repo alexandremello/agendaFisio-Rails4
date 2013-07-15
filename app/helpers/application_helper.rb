@@ -11,10 +11,18 @@ module ApplicationHelper
 	end
 	
 	def format_date(date)
-		date.strftime("%d/%m/%Y")
+		if date.kind_of? String 
+			date
+		else
+			date.strftime("%d/%m/%Y")
+		end
 	end
 
 	def format_time(time)
-		time.strftime("%Hh%Mmin")
+		if time.kind_of? String
+			time
+		else
+			time.strftime("%Hh%Mmin")
+		end
 	end
 end
